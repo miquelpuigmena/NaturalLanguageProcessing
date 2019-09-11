@@ -79,7 +79,6 @@ class MasterIndex:
                                                    document_appearances=len(word_overview_by_document))
                 TFIDF.set_word_metric_by_file(file_name, word, metric)
 
-
 class Indexer:
     def __init__(self):
         self.MI = MasterIndex()
@@ -98,15 +97,6 @@ class Indexer:
             if file.endswith(suffix):
                 files.append(file)
         return files
-
-    @staticmethod
-    def words(text):
-        """
-        Given a text, returns a list of all words in it
-        :param text:
-        :return: list of Strings
-        """
-        return re.findall(r'\p{L}+', text)
 
     @staticmethod
     def build_symetric_matrix(list_of_titles):
@@ -134,12 +124,11 @@ class Indexer:
         Extracts all words from a file and persists them in MasterIndex Dictionary
         :param file_name:
         """
-        file = open(SELMA_PATH + file_name).read().lower()
-        words_frequency = Counter(self.words(file))
-        self.TFIDF.set_file_length(file_name, sum(words_frequency.values()))
-        for word in words_frequency:
-            for word_appearances in (re.finditer(word, file)):
-                self.MI.persist_dict(file_name, word_appearances.group(), word_appearances.start())
+        file = open(SELMA_PATH + file_name, encoding='UTF8').read().lower()
+        words_in_file = re.finditer('\p{L}+', file)
+        for iteration, word_appearances in enumerate(words_in_file):
+            self.MI.persist_dict(file_name, word_appearances.group(), word_appearances.start())
+        self.TFIDF.set_file_length(file_name, iteration)
 
     def compute_corpus(self, file_names):
         for file_name in file_names:
@@ -160,6 +149,7 @@ class Indexer:
                                                     tfidf_computed[secondary])
                 similarity_matrix[principal][secondary] = similarity
                 similarity_matrix[secondary][principal] = similarity
+        print(similarity_matrix)
         return similarity_matrix
 
     def run(self):
