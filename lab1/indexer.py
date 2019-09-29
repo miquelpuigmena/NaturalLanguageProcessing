@@ -4,8 +4,6 @@ import regex as re
 import numpy as np
 
 from math import log10, sqrt
-from collections import Counter
-
 
 SELMA_PATH = './Selma/'
 INDEX_FILE = './master_index.json'
@@ -78,6 +76,7 @@ class MasterIndex:
                                                    word_repetitions=word_repetitions_in_document,
                                                    document_appearances=len(word_overview_by_document))
                 TFIDF.set_word_metric_by_file(file_name, word, metric)
+
 
 class Indexer:
     def __init__(self):
