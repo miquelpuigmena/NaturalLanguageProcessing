@@ -28,7 +28,6 @@ def count_unigrams(words):
 def count_bigrams(words):
     bigrams = [tuple(words[inx:inx + 2])
                for inx in range(len(words) - 1)]
-
     frequency_bigrams = {}
     for bigram in bigrams:
         if bigram in frequency_bigrams:
