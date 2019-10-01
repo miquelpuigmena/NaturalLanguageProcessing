@@ -126,16 +126,18 @@ class LanguageModels:
                 if tuple in self.processed_by_ngrams:
                     freq_tuple = self.processed_by_ngrams[tuple]['freq_tuple']
                     tuple_prob = self.processed_by_ngrams[tuple]['prob']
+                    tuple_prob_show = tuple_prob
                 else:
                     freq_tuple = 0
                     tuple_prob = self.processed_by_ngrams[tuple[1]]['prob']
+                    tuple_prob_show = "*Backoff: {}".format(self.processed_by_ngrams[tuple[1]]['prob'])
                 freq_i = self.processed_by_ngrams[tuple[0]]['freq']
                 print("{tuple0}\t\t{tuple1}\t\t{count_tuple}\t\t{count0}\t\t{prob_tuple}"
                       .format(tuple0=tuple[0],
                               tuple1=tuple[1],
                               count_tuple=freq_tuple,
                               count0=freq_i,
-                              prob_tuple=tuple_prob))
+                              prob_tuple=tuple_prob_show))
                 prob = prob * tuple_prob
         return prob
 
@@ -157,8 +159,10 @@ if __name__ == '__main__':
     file_txt = file.read()
     file.close()
 
-    sentence_unigram = ["det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
-    sentence_bigram = ["<s>", "det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
+    #sentence_unigram = ["det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
+    #sentence_bigram = ["<s>", "det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
+    sentence_unigram = ["han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada", "åt", "honom", "sådan", "som", "han", "var", "</s>"]
+    sentence_bigram = ["<s>", "han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada",  "åt", "honom", "sådan", "som", "han", "var", "</s>"]
 
     model_unigram = LanguageModels(file_txt, LanguageModels.UNIGRAM)
     prob_unigram = model_unigram.prob_sentence(sentence_unigram)
@@ -189,3 +193,5 @@ if __name__ == '__main__':
         "-" * 100
     ]
     print("\n".join(to_print))
+
+
