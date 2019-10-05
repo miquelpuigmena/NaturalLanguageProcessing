@@ -159,10 +159,10 @@ if __name__ == '__main__':
     file_txt = file.read()
     file.close()
 
-    #sentence_unigram = ["det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
-    #sentence_bigram = ["<s>", "det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
-    sentence_unigram = ["han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada", "åt", "honom", "sådan", "som", "han", "var", "</s>"]
-    sentence_bigram = ["<s>", "han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada",  "åt", "honom", "sådan", "som", "han", "var", "</s>"]
+    sentence_unigram = ["det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
+    sentence_bigram = ["<s>", "det", "var", "en", "gång", "en", "katt", "som", "hette", "nils", "</s>"]
+    #sentence_unigram = ["han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada", "åt", "honom", "sådan", "som", "han", "var", "</s>"]
+    #sentence_bigram = ["<s>", "han", "kunde", "inte", "förstå", "att", "de", "blevo", "så", "glada",  "åt", "honom", "sådan", "som", "han", "var", "</s>"]
 
     model_unigram = LanguageModels(file_txt, LanguageModels.UNIGRAM)
     prob_unigram = model_unigram.prob_sentence(sentence_unigram)
