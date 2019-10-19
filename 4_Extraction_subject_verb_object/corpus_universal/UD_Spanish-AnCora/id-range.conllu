@@ -1,0 +1,44 @@
+# sent_id = train-s30
+# text = La Caja Checa de Ahorros, ya comprada por el Erste Basnk de Austria, ha reducido su plantilla desde 18.700 en 1996 a los actuales 15.100 y tiene planeado reducirlo a 14.000 antes del fin del año.
+# orig_file_sentence 001#30
+1	La	el	DET	DET	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	2	det	_	_
+2	Caja	Caja	PROPN	PROPN	_	17	nsubj	_	MWE=Caja_Checa_de_Ahorros|MWEPOS=PROPN
+3	Checa	Checa	PROPN	PROPN	_	2	flat	_	_
+4	de	de	ADP	ADP	AdpType=Prep	5	case	_	_
+5	Ahorros	Ahorros	PROPN	PROPN	_	2	flat	_	SpaceAfter=No
+6	,	,	PUNCT	PUNCT	PunctType=Comm	8	punct	_	_
+7	ya	ya	ADV	ADV	_	8	advmod	_	_
+8	comprada	comprado	ADJ	ADJ	Gender=Fem|Number=Sing|VerbForm=Part	2	amod	_	_
+9	por	por	ADP	ADP	AdpType=Prep	11	case	_	_
+10	el	el	DET	DET	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	11	det	_	_
+11	Erste	Erste	PROPN	PROPN	_	8	obj	_	MWE=Erste_Basnk_de_Austria|MWEPOS=PROPN
+12	Basnk	Basnk	PROPN	PROPN	_	11	flat	_	_
+13	de	de	ADP	ADP	AdpType=Prep	14	case	_	_
+14	Austria	Austria	PROPN	PROPN	_	11	flat	_	SpaceAfter=No
+15	,	,	PUNCT	PUNCT	PunctType=Comm	8	punct	_	_
+16	ha	haber	AUX	AUX	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	17	aux	_	_
+17	reducido	reducir	VERB	VERB	Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part	0	root	_	_
+18	su	su	DET	DET	Number=Sing|Person=3|Poss=Yes|PronType=Prs	19	det	_	_
+19	plantilla	plantilla	NOUN	NOUN	Gender=Fem|Number=Sing	17	obj	_	_
+20	desde	desde	ADP	ADP	AdpType=Prep	21	case	_	_
+21	18.700	18700	NUM	NUM	NumForm=Digit|NumType=Card	17	obl	_	_
+22	en	en	ADP	ADP	AdpType=Prep	23	case	_	_
+23	1996	1996	NOUN	NOUN	AdvType=Tim	17	obl	_	_
+24	a	a	ADP	ADP	AdpType=Prep	27	case	_	_
+25	los	el	DET	DET	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	27	det	_	_
+26	actuales	actual	ADJ	ADJ	Number=Plur	27	amod	_	_
+27	15.100	15100	NUM	NUM	NumForm=Digit|NumType=Card	17	obl	_	_
+28	y	y	CCONJ	CCONJ	_	29	cc	_	_
+29	tiene	tener	VERB	VERB	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	17	conj	_	_
+30	planeado	planeado	ADJ	ADJ	Gender=Masc|Number=Sing|VerbForm=Part	29	iobj	_	_
+31-32	reducirlo	_	_	_	_	_	_	_	_
+31	reducir	reducir	VERB	VERB	VerbForm=Inf	29	xcomp	_	_
+32	lo	él	PRON	PRON	Case=Acc|Gender=Masc|Number=Sing|Person=3|PrepCase=Npr|PronType=Prs	31	obj	_	_
+33	a	a	ADP	ADP	AdpType=Prep	34	case	_	_
+34	14.000	14000	NUM	NUM	NumForm=Digit|NumType=Card	31	obl	_	_
+35	antes	antes	ADV	ADV	_	31	advmod	_	_
+36	del	del	ADP	ADP	AdpType=Preppron	37	case	_	_
+37	fin	fin	NOUN	NOUN	Gender=Masc|Number=Sing	35	obl	_	_
+38	del	del	ADP	ADP	AdpType=Preppron	39	case	_	_
+39	año	año	NOUN	NOUN	Gender=Masc|Number=Sing	37	nmod	_	SpaceAfter=No
+40	.	.	PUNCT	PUNCT	PunctType=Peri	17	punct	_	_
