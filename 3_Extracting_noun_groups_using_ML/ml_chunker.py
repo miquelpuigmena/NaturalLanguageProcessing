@@ -153,9 +153,9 @@ if __name__ == '__main__':
     # We apply the model to the test set
     test_sentences = list(conll_reader.read_sentences(test_corpus))
 
+    """
     # Here we carry out a chunk tag prediction and we report the per tag error
     # This is done for the whole corpus without regard for the sentence structure
-    """
     print("Predicting the chunks in the test set...")
     X_test_dict, y_test = extract_features(test_sentences, w_size, feature_names)
     # Vectorize the test set and one-hot encoding
