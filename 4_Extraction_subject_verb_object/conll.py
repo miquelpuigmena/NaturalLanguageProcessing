@@ -55,19 +55,6 @@ def get_most_freq(dict_db, N):
     return sorted(dict_db.items(), key=lambda x: x[1], reverse=True)[:N]
 
 
-def tupleize_by_SV(dict_db, corpus, mode='conll'):
-    if mode == 'conll':
-        TAG_SUBJECT = 'SS'.lower()
-    elif mode == 'conllu':
-        TAG_SUBJECT = 'nsubj'.lower()
-    for sentence in corpus:
-        for word in sentence:
-            if word.get('deprel') == TAG_SUBJECT:
-                form = word.get('form')
-                verb = sentence[int(word.get('head'))].get('form')
-                persist_key_to(dict_db, (form, verb))
-
-
 def find_verb_relation_by(sentence, center_pos, TAG):
     for word in sentence:
         if word.get('deprel') == TAG:
@@ -84,6 +71,29 @@ def find_verb_relation_by(sentence, center_pos, TAG):
 def isRange(id):
     pattern = re.compile("^\d+-\d+")
     return pattern.match(id)
+
+
+def persist_key_to(dict_db, key):
+    freq = 1
+    if key in dict_db:
+        freq = dict_db.get(key) + 1
+    dict_db.update({key: freq})
+
+
+def tupleize_by_SV(dict_db, corpus, mode='conll'):
+    if mode == 'conll':
+        TAG_SUBJECT = 'SS'.lower()
+    elif mode == 'conllu':
+        TAG_SUBJECT = 'nsubj'.lower()
+    else:
+        print("Unknown mode")
+        exit(1)
+    for sentence in corpus:
+        for word in sentence:
+            if word.get('deprel') == TAG_SUBJECT:
+                form = word.get('form')
+                verb = sentence[int(word.get('head'))].get('form')
+                persist_key_to(dict_db, (form, verb))
 
 
 def tupleize_by_SVO(dict_db, corpus, mode='conll'):
@@ -106,13 +116,6 @@ def tupleize_by_SVO(dict_db, corpus, mode='conll'):
                     verb = sentence[int(word.get('head'))].get('form')
                     form_object = found_object.get('form')
                     persist_key_to(dict_db, (form_subject, verb, form_object))
-
-
-def persist_key_to(dict_db, key):
-    freq = 1
-    if key in dict_db:
-        freq = dict_db.get(key) + 1
-    dict_db.update({key: freq})
 
 
 def save(file, formatted_corpus, column_names):
@@ -165,10 +168,10 @@ if __name__ == '__main__':
         dict_db = dict()
         tupleize_by_SV(dict_db, formatted_corpus, mode='conllu')
         print("Total tuples found: {}".format(sum(dict_db.values())))
-        print(get_most_freq(dict_db, N=5))
+        print(get_most_freq(dict_db, N=3))
 
         dict_db = dict()
         tupleize_by_SVO(dict_db, formatted_corpus, mode='conllu')
         print("Total tuples found: {}".format(sum(dict_db.values())))
-        print(get_most_freq(dict_db, N=5))
+        print(get_most_freq(dict_db, N=3))
 

@@ -140,10 +140,10 @@ if __name__ == '__main__':
 
     training_start_time = time.clock()
     print("Training the model...")
-    classifier = linear_model.LogisticRegression(multi_class='auto', solver='lbfgs')
+    #classifier = linear_model.LogisticRegression(multi_class='auto', solver='lbfgs')
     #classifier = linear_model.Perceptron(penalty='l2')
     #classifier = tree.DecisionTreeClassifier()
-    #classifier = linear_model.SGDClassifier(penalty='l2')
+    classifier = linear_model.SGDClassifier(penalty='l2')
 
     model = classifier.fit(X, y)
     print(model)

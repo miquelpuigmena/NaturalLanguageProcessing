@@ -78,7 +78,7 @@ if __name__ == '__main__':
         graph['deprels']['0'] = 'ROOT'
 
         while queue:
-            X.append(extract_mode_3(stack, queue, graph, feature_names, sentence))
+            X.append(extract_mode_2(stack, queue, graph, feature_names, sentence))
             stack, queue, graph, trans = reference(stack, queue, graph)
             transitions.append(trans)
         stack, graph = transition.empty_stack(stack, graph)
